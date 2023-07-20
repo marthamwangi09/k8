@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: mnyagura/backend:v1.0.0
+          ports:
+            - containerPort: 5000
+          env:
+            - name: PORT
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key: app_port
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key: database_url
