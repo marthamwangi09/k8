@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+        - name: client
+          image: mnyagura/client:v1.0.0
+          ports:
+            - containerPort: 5000
+          env:
+            - name: REACT_APP_BACKEND_API_URL
+              valueFrom:
+                secretKeyRef:
+                  name: client-secret
+                  key: backend_url
