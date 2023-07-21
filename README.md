@@ -1,5 +1,5 @@
 
-## Yolo Orchestration
+## Yolo K8 Orchestration
 ### Description
 In this project, Kubernetes (K8) is used to organize and control the YOLO app on a group of computers (cluster) and make it accessible. The YOLO app has two parts, the client-side and backend. The project ensures that the app is deployed and managed smoothly by leveraging Kubernetes features.
 
